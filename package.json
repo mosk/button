@@ -1,0 +1,33 @@
+{
+  "name": "button",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "gulp": "./node_modules/.bin/gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mosk/button.git"
+  },
+  "author": "Mihail Moskalev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mosk/button/issues"
+  },
+  "homepage": "https://github.com/mosk/button#readme",
+  "dependencies": {
+    "del": "^3.0.0",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-remember": "^1.0.1",
+    "gulp-sourcemaps": "^2.6.4"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.24.6",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-newer": "^1.4.0",
+    "gulp-stylus": "^2.7.0",
+    "stylus": "^0.54.5"
+  }
+}
