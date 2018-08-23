@@ -7,8 +7,44 @@
 	<link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-	<header></header>
-	<main></main>
+	<header>
+		<h1 class="title">Button maker</h1>
+	</header>
+	<main>
+		<section class="factory">
+			<form class="settings" action="">
+				<h2 class="visually-hidden">Settings</h2>
+				<fieldset class="settings__text">
+					<legend class="title">Text</legend>
+					<label class="label" for="settingsText">Button text</label>
+					<input class="input" id="settingsText" type="text" placeholder="button">
+				</fieldset>
+				<fieldset class="settings__font">
+					<legend class="title">Font</legend>
+					<label class="label" for="settingsFontFamily">Font-family</label>
+					<input class="input" id="settingsFontFamily" type="text">
+					<label class="label" for="settingsFontSize">Size</label>
+					<input class="input" id="settingsFontSize" type="text">
+					<label class="label" for="settingsFontColor">Color</label>
+					<input class="input" id="settingsFontColor" type="text">
+					<label class="label" for="settingsFontWeight">Weight</label>
+					<input class="input" id="settingsFontWeight" type="text" disabled>
+				</fieldset>
+				<button type="submit">Make button!</button>
+			</form>
+			<div class="result">
+				<h2 class="visually-hidden">Result</h2>
+				<div class="preview">
+					<h3 class="visually-hidden">Preview</h3>
+					
+				</div>
+				<div class="code">
+					<h3 class="visually-hidden">Code</h3>
+
+				</div>
+			</div>
+		</section>
+	</main>
 	<footer></footer>
 </body>
 </html>
