@@ -2,25 +2,28 @@
 <html lang="ru">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Button</title>
 	
 	<link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-	<header>
+	<header class="header">
 		<h1 class="title">Button maker</h1>
 	</header>
-	<main>
+	<main class="main">
 		<section class="factory">
-			<form class="settings" action="">
+			<form class="factory__col settings" action="">
 				<h2 class="visually-hidden">Settings</h2>
 				<fieldset class="settings__text">
 					<legend class="title">Text</legend>
+					
 					<label class="label" for="settingsText">Button text</label>
 					<input class="input" id="settingsText" type="text" placeholder="button">
 				</fieldset>
 				<fieldset class="settings__font">
 					<legend class="title">Font</legend>
+
 					<label class="label" for="settingsFontFamily">Font-family</label>
 					<input class="input" id="settingsFontFamily" type="text">
 					<label class="label" for="settingsFontSize">Size</label>
@@ -32,19 +35,27 @@
 				</fieldset>
 				<button type="submit">Make button!</button>
 			</form>
-			<div class="result">
+			<div class="factory__col result">
 				<h2 class="visually-hidden">Result</h2>
 				<div class="preview">
 					<h3 class="visually-hidden">Preview</h3>
-					
+					<div class="container"></div>
 				</div>
 				<div class="code">
 					<h3 class="visually-hidden">Code</h3>
-
+					<div class="container"></div>
 				</div>
 			</div>
 		</section>
 	</main>
 	<footer></footer>
+
+	<template id="template">
+		<div class="button">
+			<a href="#" target="_blank" style="display: inline-block; width: 300px; line-height: 50px; font-family: 'Segoe UI', 'Helvetica Neue', sans-serif; font-size: 16px; color: #FFFFFF; background-color: #99CC99;">
+				Button
+			</a>
+		</div>
+	</template>
 </body>
 </html>
