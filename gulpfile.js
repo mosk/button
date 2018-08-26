@@ -26,7 +26,7 @@ gulp.task(`clean`, () => {
 });
 
 gulp.task(`assets`, () => {
-	return gulp.src(`src/index.html`)
+	return gulp.src([`src/index.html`, `src/js/main.js`])
 		.pipe(gulp.dest(`build`));
 });
 
@@ -37,7 +37,7 @@ gulp.task(`build`, gulp.series(
 
 gulp.task(`watch`, () => {
 	gulp.watch(`src/styles/**/*.*`, gulp.series(`styles`));
-	gulp.watch(`src/**/*.html`, gulp.series(`assets`));
+	gulp.watch([`src/**/*.html`, `src/**/*.js`], gulp.series(`assets`));
 });
 
 gulp.task(`serve`, () => {
