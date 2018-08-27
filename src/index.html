@@ -15,6 +15,12 @@
 		<section class="factory">
 			<form class="factory__col settings" action="">
 				<h2 class="visually-hidden">Settings</h2>
+				<fieldset class="settings__size">
+					<legend class="title">Size</legend>
+					
+					<label class="label" for="settingsWidth">Width</label>
+					<input class="input" id="settingsWidth" type="text" placeholder="In 'px'">
+				</fieldset>
 				<fieldset class="settings__text">
 					<legend class="title">Text</legend>
 					
@@ -32,6 +38,12 @@
 					<input class="input" id="settingsFontColor" type="text">
 					<label class="label" for="settingsFontWeight">Weight</label>
 					<input class="input" id="settingsFontWeight" type="text" disabled>
+				</fieldset>
+				<fieldset class="settings__bg">
+					<legend class="title">Background</legend>
+
+					<label class="label" for="settingsBgColor">Color</label>
+					<input class="input" id="settingsBgColor" type="text">
 				</fieldset>
 				<button type="submit">Make button!</button>
 			</form>
