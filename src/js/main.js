@@ -1,33 +1,25 @@
-const buttonTemplate = document.querySelector(`#template`).content;
-
-const createButton = (settings, template = buttonTemplate) => {
-	const container = template.cloneNode(true);
-	const newButton = document.createElement(`div`);
-	newButton.appendChild(container);
-	const buttonWrapper = container.querySelector(`div`);
-	const button = newButton.querySelector(`a`);
-
-	const settingsDefault = {
-		href: `#`,
-		target: `_blank`,
-		width: `240`,
-		height: `32`,
-		fontFamily: `'Segoe UI', 'Helvetica Neue', sans-serif`,
-		fontSize: `16`,
-		color: `#FFFFFF`,
-		bgColor: `red`
-	};
-
-	button.href = settings.href || settingsDefault.href;
-	// button.setAttribute(`href`, settings.href || settingsDefault.href);
-	// button.setAttribute(`target`, settings.target || settingsDefault.target);
-	// button.style.width = settings.width || settingsDefault.width;
-	// button.style.height = settings.height || settingsDefault.height;
-
-	document.querySelector(`.result__preview .container`).appendChild(newButton);
+const buttonContainer = document.querySelector(`.result__preview .container > div`);
+const settingsDefault = {
+	href: `#`,
+	target: `_blank`,
+	width: `240`,
+	height: `32`,
+	fontFamily: `'Segoe UI', 'Helvetica Neue', sans-serif`,
+	fontSize: `16`,
+	color: `#FFFFFF`,
+	bgColor: `red`
 };
 
-createButton();
+const changeButton = (settings = settingsDefault, container = buttonContainer) => {
+	const button = container.querySelector(`a`);
+
+	button.setAttribute(`href`, settings.href || settingsDefault.href);
+	button.setAttribute(`target`, settings.target || settingsDefault.target);
+	button.style.width = settings.width || settingsDefault.width;
+	button.style.height = settings.height || settingsDefault.height;
+};
+
+changeButton();
 
 // const windowFactory = document.querySelector(`.factory`);
 
