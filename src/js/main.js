@@ -3,6 +3,8 @@ const BUTTON_PREVIEW = document.querySelector(`.result__preview .container`);
 const BUTTON_CODE = document.querySelector(`.result__code .container`);
 const BUTTON_SETTINGS = document.querySelector(`.settings`);
 
+const INPUTS = BUTTON_SETTINGS.querySelectorAll(`input`);
+
 const INPUT_WIDTH = BUTTON_SETTINGS.querySelector(`#settingsWidth`);
 const INPUT_HEIGHT = BUTTON_SETTINGS.querySelector(`#settingsHeight`);
 const INPUT_FONT_FAMILY = BUTTON_SETTINGS.querySelector(`#settingsFontFamily`);
@@ -10,22 +12,6 @@ const INPUT_FONT_SIZE = BUTTON_SETTINGS.querySelector(`#settingsFontSize`);
 const INPUT_FONT_COLOR = BUTTON_SETTINGS.querySelector(`#settingsFontColor`);
 const INPUT_FONT_WEIGHT = BUTTON_SETTINGS.querySelector(`#settingsFontWeight`);
 const INPUT_BG_COLOR = BUTTON_SETTINGS.querySelector(`#settingsBgColor`);
-
-let settingsNew = {
-	_width: INPUT_WIDTH.value,
-	_height: INPUT_HEIGHT.value,
-	_fontFamily: INPUT_FONT_FAMILY.value,
-	_fontSize: INPUT_FONT_SIZE.value,
-	_fontColor: INPUT_FONT_COLOR.value,
-	_fontWeight: INPUT_FONT_WEIGHT.value,
-	_bgColor: INPUT_BG_COLOR.value,
-	get width() {
-		return this._width;
-	},
-	set width(width) {
-		this._width = width;
-	}
-};
 
 const settingsDefault = {
 	href: `#`,
@@ -58,44 +44,63 @@ const renderCode = (what, where) => {
 	where.innerText = code;
 };
 
-INPUT_WIDTH.addEventListener(`change`, (evt) => {
+const refreshSettings = (event, settings) => {
 	const propertyPrefix = `settings`;
-	const property = evt.target.id.replace(propertyPrefix, ``).toLowerCase();
-	settingsNew[property] = evt.target.value;
+	const property = event.target.id.replace(propertyPrefix, ``).toLowerCase();
 
-	console.log(evt.target.value);
-	console.log(property);
+	settings[property] = event.target.value;
+	console.log(settings[property]);
+};
+
+let settingsNew = {
+	get width() {
+		return this._width;
+	},
+	get height() {
+		return this._height;
+	},
+	get fontFamily() {
+		return this._fontFamily;
+	},
+	get fontSize() {
+		return this._fontSize;
+	},
+	get fontColor() {
+		return this._fontColor;
+	},
+	get fontWeight() {
+		return this._fontWeight;
+	},
+	get bgColor() {
+		return this._bgColor;
+	},
+	set width(val) {
+		this._width = val;
+	},
+	set height(val) {
+		this._height = val;
+	},
+	set fontFamily(val) {
+		this._fontFamily = val;
+	},
+	set fontSize(val) {
+		this._fontSize = val;
+	},
+	set fontColor(val) {
+		this._fontColor = val;
+	},
+	set fontWeight(val) {
+		this._fontWeight = val;
+	},
+	set bgColor(val) {
+		this._bgColor = val;
+	}
+};
+
+// обработчик события на все инпуты
+Array.from(INPUTS).map((input) => {
+	input.addEventListener(`change`, (evt) => refreshSettings(evt, settingsNew));
 });
 
 changeButton();
 renderCode(BUTTON_PREVIEW, BUTTON_CODE);
-
-// const windowFactory = document.querySelector(`.factory`);
-
-// // окно настроек
-// const windowSettings = windowFactory.querySelector(`.settings`);
-// const settingsWidth = windowSettings.querySelector(`#settingsWidth`);
-// const settingsText = windowSettings.querySelector(`#settingsText`);
-// const settingsBgColor = windowSettings.querySelector(`#settingsBgColor`);
-
-// // окно результата
-// const windowResult = windowFactory.querySelector(`.result`);
-// const previewButton = resultPreview.querySelector(`div`);
-
-// // Ширина кнопки
-// settingsWidth.addEventListener(`change`, () => {
-// 	previewButton.querySelector(`a`).style.width = `${settingsWidth.value}px`;
-// 	renderCode(resultPreview, resultCode);
-// });
-
-// // текст кнопки
-// settingsText.addEventListener(`change`, () => {
-// 	previewButton.querySelector(`a`).innerText = settingsText.value;
-// 	renderCode(resultPreview, resultCode);
-// });
-
-// // фон кнопки
-// settingsBgColor.addEventListener(`change`, () => {
-// 	previewButton.querySelector(`a`).style.backgroundColor = settingsBgColor.value;
-// 	renderCode(resultPreview, resultCode);
-// });
