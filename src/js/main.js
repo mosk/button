@@ -1,4 +1,26 @@
-const buttonContainer = document.querySelector(`.result__preview .container > div`);
+const BUTTON_CONTAINER = document.querySelector(`.result__preview .container > div`);
+const BUTTON_PREVIEW = document.querySelector(`.result__preview .container`);
+const BUTTON_CODE = document.querySelector(`.result__code .container`);
+const BUTTON_SETTINGS = document.querySelector(`.settings`);
+
+const INPUT_WIDTH = BUTTON_SETTINGS.querySelector(`#settingsWidth`);
+const INPUT_HEIGHT = BUTTON_SETTINGS.querySelector(`#settingsHeight`);
+const INPUT_FONT_FAMILY = BUTTON_SETTINGS.querySelector(`#settingsFontFamily`);
+const INPUT_FONT_SIZE = BUTTON_SETTINGS.querySelector(`#settingsFontSize`);
+const INPUT_FONT_COLOR = BUTTON_SETTINGS.querySelector(`#settingsFontColor`);
+const INPUT_FONT_WEIGHT = BUTTON_SETTINGS.querySelector(`#settingsFontWeight`);
+const INPUT_BG_COLOR = BUTTON_SETTINGS.querySelector(`#settingsBgColor`);
+
+let settingsNew = {
+	width: INPUT_WIDTH.value,
+	height: INPUT_HEIGHT.value,
+	fontFamily: INPUT_FONT_FAMILY.value,
+	fontSize: INPUT_FONT_SIZE.value,
+	fontColor: INPUT_FONT_COLOR.value,
+	fontWeight: INPUT_FONT_WEIGHT.value,
+	bgColor: INPUT_BG_COLOR.value
+};
+
 const settingsDefault = {
 	href: `#`,
 	target: `_blank`,
@@ -10,16 +32,32 @@ const settingsDefault = {
 	bgColor: `red`
 };
 
-const changeButton = (settings = settingsDefault, container = buttonContainer) => {
+const changeButton = (settings = settingsDefault, container = BUTTON_CONTAINER) => {
 	const button = container.querySelector(`a`);
 
 	button.setAttribute(`href`, settings.href || settingsDefault.href);
 	button.setAttribute(`target`, settings.target || settingsDefault.target);
-	button.style.width = settings.width || settingsDefault.width;
-	button.style.height = settings.height || settingsDefault.height;
+	// size
+	button.style.width = (settings.width || settingsDefault.width) + `px`;
+	button.style.lineHeight = (settings.height || settingsDefault.height) + `px`;
+	// font
+	button.style.fontFamily = settings.fontFamily || settingsDefault.fontFamily;
+	button.style.fontSize = (settings.fontSize || settingsDefault.fontSize) + `px`;
+	button.style.color = settings.color || settingsDefault.color;
+	button.style.backgroundColor = settings.bgColor || settingsDefault.bgColor;
 };
 
+const renderCode = (what, where) => {
+	const code = what.innerHTML.trim(``).split(`&quot;`).join(`'`);
+	where.innerText = code;
+};
+
+INPUT_WIDTH.addEventListener(`change`, () => {
+	settingsNew.width = INPUT_WIDTH.value;
+});
+
 changeButton();
+renderCode(BUTTON_PREVIEW, BUTTON_CODE);
 
 // const windowFactory = document.querySelector(`.factory`);
 
@@ -31,15 +69,7 @@ changeButton();
 
 // // окно результата
 // const windowResult = windowFactory.querySelector(`.result`);
-// const resultPreview = windowResult.querySelector(`.result__preview .container`);
 // const previewButton = resultPreview.querySelector(`div`);
-// const resultCode = windowResult.querySelector(`.result__code .container`);
-
-// const renderCode = (what, where) => {
-// 	const code = what.innerHTML.trim(``).split(`&quot;`).join(`'`);
-// 	console.log(code); // \n
-// 	where.innerText = code;
-// };
 
 // // Ширина кнопки
 // settingsWidth.addEventListener(`change`, () => {
@@ -58,6 +88,3 @@ changeButton();
 // 	previewButton.querySelector(`a`).style.backgroundColor = settingsBgColor.value;
 // 	renderCode(resultPreview, resultCode);
 // });
-
-// renderCode(resultPreview, resultCode);
-
