@@ -12,13 +12,19 @@ const INPUT_FONT_WEIGHT = BUTTON_SETTINGS.querySelector(`#settingsFontWeight`);
 const INPUT_BG_COLOR = BUTTON_SETTINGS.querySelector(`#settingsBgColor`);
 
 let settingsNew = {
-	width: INPUT_WIDTH.value,
-	height: INPUT_HEIGHT.value,
-	fontFamily: INPUT_FONT_FAMILY.value,
-	fontSize: INPUT_FONT_SIZE.value,
-	fontColor: INPUT_FONT_COLOR.value,
-	fontWeight: INPUT_FONT_WEIGHT.value,
-	bgColor: INPUT_BG_COLOR.value
+	_width: INPUT_WIDTH.value,
+	_height: INPUT_HEIGHT.value,
+	_fontFamily: INPUT_FONT_FAMILY.value,
+	_fontSize: INPUT_FONT_SIZE.value,
+	_fontColor: INPUT_FONT_COLOR.value,
+	_fontWeight: INPUT_FONT_WEIGHT.value,
+	_bgColor: INPUT_BG_COLOR.value,
+	get width() {
+		return this._width;
+	},
+	set width(width) {
+		this._width = width;
+	}
 };
 
 const settingsDefault = {
@@ -52,8 +58,13 @@ const renderCode = (what, where) => {
 	where.innerText = code;
 };
 
-INPUT_WIDTH.addEventListener(`change`, () => {
-	settingsNew.width = INPUT_WIDTH.value;
+INPUT_WIDTH.addEventListener(`change`, (evt) => {
+	const propertyPrefix = `settings`;
+	const property = evt.target.id.replace(propertyPrefix, ``).toLowerCase();
+	settingsNew[property] = evt.target.value;
+
+	console.log(evt.target.value);
+	console.log(property);
 });
 
 changeButton();
