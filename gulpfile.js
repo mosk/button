@@ -6,9 +6,11 @@ const newer = require(`gulp-newer`);
 const remember = require(`gulp-remember`);
 const autoprefixer = require(`gulp-autoprefixer`);
 const browserSync = require(`browser-sync`).create();
+const webpack = require(`webpack`);
+const webpackStream = require(`webpack-stream`);
+const webpackConfig = require(`./webpack.config.js`);
 
 gulp.task(`styles`, () => {
-	
 	return gulp.src(`src/**/main.styl`, {since: gulp.lastRun(`styles`)})
 		.pipe(sourcemaps.init())
 		.pipe(remember(`styles`))
@@ -21,23 +23,31 @@ gulp.task(`styles`, () => {
 		.pipe(gulp.dest(`build`));
 });
 
+gulp.task(`js`, () => {
+
+	return gulp.src(`src/**/main.js`)
+		.pipe(webpackStream(webpackConfig, webpack))
+		.pipe(gulp.dest(`build/js`));
+});
+
 gulp.task(`clean`, () => {
 	return del(`build`);
 });
 
 gulp.task(`assets`, () => {
-	return gulp.src([`src/index.html`, `src/js/main.js`])
+	return gulp.src([`src/index.html`])
 		.pipe(gulp.dest(`build`));
 });
 
 gulp.task(`build`, gulp.series(
 	`clean`,
-	gulp.parallel(`styles`, `assets`))
+	gulp.parallel(`styles`, `assets`, `js`))
 );
 
 gulp.task(`watch`, () => {
 	gulp.watch(`src/styles/**/*.*`, gulp.series(`styles`));
-	gulp.watch([`src/**/*.html`, `src/**/*.js`], gulp.series(`assets`));
+	gulp.watch([`src/**/*.html`], gulp.series(`assets`));
+	gulp.watch(`src/js/**/*.js`, gulp.series(`js`));
 });
 
 gulp.task(`serve`, () => {

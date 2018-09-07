@@ -24,10 +24,17 @@
     "gulp-sourcemaps": "^2.6.4"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.2",
+    "babel-preset-env": "^1.7.0",
     "browser-sync": "^2.24.6",
     "gulp-autoprefixer": "^5.0.0",
     "gulp-newer": "^1.4.0",
     "gulp-stylus": "^2.7.0",
-    "stylus": "^0.54.5"
+    "stylus": "^0.54.5",
+    "webpack": "^4.17.2",
+    "webpack-stream": "^5.1.1"
   }
 }

@@ -1,3 +1,7 @@
+import settingsDefault from "./data/settingsDefault";
+import renderCode from "./data/renderCode";
+import changeButton from "./data/changeButton";
+
 const BUTTON_CONTAINER = document.querySelector(`.result__preview .container > div`);
 const BUTTON_PREVIEW = document.querySelector(`.result__preview .container`);
 const BUTTON_CODE = document.querySelector(`.result__code .container`);
@@ -13,18 +17,7 @@ const INPUT_FONT_COLOR = BUTTON_SETTINGS.querySelector(`#settingsFontColor`);
 const INPUT_FONT_WEIGHT = BUTTON_SETTINGS.querySelector(`#settingsFontWeight`);
 const INPUT_BG_COLOR = BUTTON_SETTINGS.querySelector(`#settingsBgColor`);
 
-const settingsDefault = {
-	href: `#`,
-	target: `_blank`,
-	width: `240`,
-	height: `32`,
-	fontFamily: `'Segoe UI', 'Helvetica Neue', sans-serif`,
-	fontSize: `16`,
-	color: `#FFFFFF`,
-	bgColor: `red`
-};
-
-const changeButton = (settings = settingsDefault, container = BUTTON_CONTAINER) => {
+/*const changeButton = (settings = settingsDefault, container = BUTTON_CONTAINER) => {
 	const button = container.querySelector(`a`);
 
 	button.setAttribute(`href`, settings.href || settingsDefault.href);
@@ -37,12 +30,12 @@ const changeButton = (settings = settingsDefault, container = BUTTON_CONTAINER) 
 	button.style.fontSize = (settings.fontSize || settingsDefault.fontSize) + `px`;
 	button.style.color = settings.color || settingsDefault.color;
 	button.style.backgroundColor = settings.bgColor || settingsDefault.bgColor;
-};
+};*/
 
-const renderCode = (what, where) => {
-	const code = what.innerHTML.trim(``).split(`&quot;`).join(`'`);
-	where.innerText = code;
-};
+// const renderCode = (what, where) => {
+// 	const code = what.innerHTML.trim(``).split(`&quot;`).join(`'`);
+// 	where.innerText = code;
+// };
 
 const refreshSettings = (event, settings) => {
 	const propertyPrefix = `settings`;
