@@ -33,6 +33,7 @@
     "gulp-autoprefixer": "^5.0.0",
     "gulp-newer": "^1.4.0",
     "gulp-stylus": "^2.7.0",
+    "source-map-loader": "^0.2.4",
     "stylus": "^0.54.5",
     "webpack": "^4.17.2",
     "webpack-stream": "^5.1.1"

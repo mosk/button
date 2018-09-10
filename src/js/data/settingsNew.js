@@ -1,12 +1,3 @@
-import settingsDefault from './data/settingsDefault';
-import renderCode from './data/renderCode';
-import changeButton from './data/changeButton';
-import refreshSettings from './data/refreshSettings';
-// import settingsNew form './data/settingsNew';
-
-const BUTTON_SETTINGS = document.querySelector(`.settings`);
-const INPUTS = BUTTON_SETTINGS.querySelectorAll(`input`);
-
 let settingsNew = {
 	get width() {
 		return this._width;
@@ -52,9 +43,4 @@ let settingsNew = {
 	}
 };
 
-// обработчик события на все инпуты
-Array.from(INPUTS).map((input) => {
-	input.addEventListener(`change`, (evt) => refreshSettings(evt, settingsNew));
-});
-
-changeButton();
+export default settingsNew;

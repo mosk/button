@@ -1,6 +1,7 @@
 module.exports = {
-    mode: 'none',
+    mode: `none`,
     output: {
-        filename: 'script.js',
-    }
+        filename: `script.js`,
+    },
+    devtool: `source-map`
 };
