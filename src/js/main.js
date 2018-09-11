@@ -54,7 +54,7 @@ let settingsNew = {
 
 // обработчик события на все инпуты
 Array.from(INPUTS).map((input) => {
-	input.addEventListener(`change`, (evt) => refreshSettings(evt, settingsNew));
+	input.addEventListener(`keyup`, (evt) => refreshSettings(evt, settingsNew));
 });
 
 changeButton();
