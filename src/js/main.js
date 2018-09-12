@@ -2,7 +2,7 @@ import settingsDefault from './data/settingsDefault';
 import renderCode from './data/renderCode';
 import changeButton from './data/changeButton';
 import refreshSettings from './data/refreshSettings';
-// import settingsNew form './data/settingsNew';
+import debounce from './data/debounce';
 
 const BUTTON_SETTINGS = document.querySelector(`.settings`);
 const INPUTS = BUTTON_SETTINGS.querySelectorAll(`input`);
@@ -52,9 +52,10 @@ let settingsNew = {
 	}
 };
 
-// обработчик события на все инпуты
+const refreshSettingsWithDebounce = debounce(refreshSettings, 600);
+
 Array.from(INPUTS).map((input) => {
-	input.addEventListener(`keyup`, (evt) => refreshSettings(evt, settingsNew));
+	input.addEventListener(`keyup`, (evt) => refreshSettingsWithDebounce(evt, settingsNew));
 });
 
 changeButton();
