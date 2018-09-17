@@ -3,7 +3,9 @@ import renderCode from './renderCode';
 
 const BUTTON_CONTAINER = document.querySelector(`.result__preview .container > div`);
 const BUTTON = BUTTON_CONTAINER.querySelector(`a`);
+
 const changeButton = (settings = settingsDefault, container = BUTTON_CONTAINER) => {
+	BUTTON.textContent = settings.text || settingsDefault.text;
 
 	BUTTON.setAttribute(`href`, settings.href || settingsDefault.href);
 	BUTTON.setAttribute(`target`, settings.target || settingsDefault.target);

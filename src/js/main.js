@@ -3,11 +3,16 @@ import renderCode from './data/renderCode';
 import changeButton from './data/changeButton';
 import refreshSettings from './data/refreshSettings';
 import debounce from './data/debounce';
+import copyElementText from './data/copyElementText.js';
 
 const BUTTON_SETTINGS = document.querySelector(`.settings`);
+const BUTTON_CODE = document.querySelector(`.result__code .container`);
 const INPUTS = BUTTON_SETTINGS.querySelectorAll(`input`);
 
 let settingsNew = {
+	get text() {
+		return this._text;
+	},
 	get width() {
 		return this._width;
 	},
@@ -28,6 +33,9 @@ let settingsNew = {
 	},
 	get bgColor() {
 		return this._bgColor;
+	},
+	set text(val) {
+		this._text = val;
 	},
 	set width(val) {
 		this._width = val;
@@ -56,6 +64,10 @@ const refreshSettingsWithDebounce = debounce(refreshSettings, 600);
 
 Array.from(INPUTS).map((input) => {
 	input.addEventListener(`keyup`, (evt) => refreshSettingsWithDebounce(evt, settingsNew));
+});
+
+BUTTON_CODE.addEventListener(`click`, (evt) => {
+	copyElementText(evt);
 });
 
 changeButton();

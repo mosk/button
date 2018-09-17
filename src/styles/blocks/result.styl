@@ -4,6 +4,22 @@
 	&__preview,
 	&__code 
 		width 100%
+		.notification
+			display inline-block
+			position absolute
+			width auto
+			margin 0
+			padding 10px 16px
+			font-size 13px
+			line-height 16px
+			color #ffffff
+			background-color #222222
+			border-radius 4px
+			transition opacity 0.9s
+			&--visible
+				opacity 0.8
+			&--hidden
+				opacity 0
 	&__preview
 		margin-bottom 20px
 		.container
@@ -11,6 +27,7 @@
 			justify-content center
 			align-items center
 	.container
+		position relative
 		height 100%
 		padding 8px
 		border 1px solid $colorSecondary

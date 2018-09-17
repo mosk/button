@@ -1,4 +1,5 @@
 const settingsDefault = {
+	text: `кнопка`,
 	href: `#`,
 	target: `_blank`,
 	width: `240`,
