@@ -20,23 +20,23 @@ gulp.task(`styles`, () => {
             cascade: false
         }))
 		.pipe(sourcemaps.write())
-		.pipe(gulp.dest(`build`));
+		.pipe(gulp.dest(`docs`));
 });
 
 gulp.task(`js`, () => {
 
 	return gulp.src(`src/**/main.js`)
 		.pipe(webpackStream(webpackConfig, webpack))
-		.pipe(gulp.dest(`build/js`));
+		.pipe(gulp.dest(`docs/js`));
 });
 
 gulp.task(`clean`, () => {
-	return del(`build`);
+	return del(`docs`);
 });
 
 gulp.task(`assets`, () => {
 	return gulp.src([`src/index.html`])
-		.pipe(gulp.dest(`build`));
+		.pipe(gulp.dest(`docs`));
 });
 
 gulp.task(`build`, gulp.series(
@@ -52,10 +52,10 @@ gulp.task(`watch`, () => {
 
 gulp.task(`serve`, () => {
 	browserSync.init({
-		server: `build`
+		server: `docs`
 	});
 
-	browserSync.watch(`build/**/*.*`).on(`change`, browserSync.reload);
+	browserSync.watch(`docs/**/*.*`).on(`change`, browserSync.reload);
 });
 
 gulp.task(`dev`, gulp.series(`build`, gulp.parallel(`watch`, `serve`)));
