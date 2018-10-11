@@ -15,12 +15,20 @@
 		<section class="factory">
 			<form class="factory__col settings" action="">
 				<h2 class="visually-hidden">Settings</h2>
-				<fieldset class="settings__text">
-					<legend class="title">Text</legend>
+				<fieldset class="settings__main">
+					<legend class="title">Text & link</legend>
 					
 					<div class="property">
 						<label class="label" for="settingsText">Button text</label>
 						<input class="input" id="settingsText" type="text" placeholder="Button text" value="Button">
+					</div>
+					<div class="property">
+						<label class="label" for="settingsLink">Button link</label>
+						<input class="input" id="settingsLink" type="text" placeholder="Button link" value="#">
+					</div>
+					<div class="property">
+						<label class="label" for="settingsTarget">Open in new window</label>
+						<input class="input input--checkbox" id="settingsTarget" type="checkbox" checked>
 					</div>
 				</fieldset>
 				<fieldset class="settings__size">
@@ -28,11 +36,11 @@
 
 					<div class="property">
 						<label class="label" for="settingsWidth">Width</label>
-						<input class="input" id="settingsWidth" type="text" placeholder="Width" value="240">
+						<input class="input" id="settingsWidth" type="number" min="0" placeholder="Width" value="240">
 					</div>
 					<div class="property">
 						<label class="label" for="settingsHeight">Height</label>
-						<input class="input" id="settingsHeight" type="text" placeholder="Height" value="50">
+						<input class="input" id="settingsHeight" type="number" min="0" placeholder="Height" value="50">
 					</div>
 				</fieldset>
 				<fieldset class="settings__font">
@@ -40,11 +48,11 @@
 					
 					<div class="property">
 						<label class="label" for="settingsFontFamily">Font-family</label>
-						<input class="input" id="settingsFontFamily" type="text" placeholder="Font-family" value="Georgia, serif">
+						<input class="input" id="settingsFontFamily" type="text" placeholder="Font-family" value="'Segoe UI', 'Helvetica Neue', sans-serif">
 					</div>
 					<div class="property">
 						<label class="label" for="settingsFontSize">Size</label>
-						<input class="input" id="settingsFontSize" type="text" placeholder="Size" value="13">
+						<input class="input" id="settingsFontSize" type="number" min="0" placeholder="Size" value="13">
 					</div>
 					<div class="property">
 						<label class="label" for="settingsFontColor">Color</label>
@@ -52,7 +60,7 @@
 					</div>
 					<div class="property">
 						<label class="label" for="settingsFontWeight">Weight</label>
-						<input class="input" id="settingsFontWeight" type="text" placeholder="Weight" value="400">
+						<input class="input" id="settingsFontWeight" type="number" min="100" max="700" step="100" placeholder="Weight" value="400">
 					</div>
 				</fieldset>
 				<fieldset class="settings__bg">

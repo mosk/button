@@ -1,5 +1,4 @@
-import showNotification from './showNotification'; 
-import removeNotification from './removeNotification'; 
+import { showNotification, removeNotification } from './notification';
 
 const copyElementText = (evt) => {
 	const copytext = document.createElement(`input`);
@@ -12,7 +11,7 @@ const copyElementText = (evt) => {
 	showNotification(evt, `Код скопирован`);
 	setTimeout(function() {
 		removeNotification(evt);
-	}, 1400);
+	}, 1200);
 };
 
 export default copyElementText;
