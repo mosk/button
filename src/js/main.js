@@ -1,4 +1,3 @@
-import settingsDefault from './data/settingsDefault';
 import renderCode from './data/renderCode';
 import changeButton from './data/changeButton';
 import refreshSettings from './data/refreshSettings';
@@ -9,7 +8,22 @@ const BUTTON_SETTINGS = document.querySelector(`.settings`);
 const BUTTON_CODE = document.querySelector(`.result__code .container`);
 const INPUTS = BUTTON_SETTINGS.querySelectorAll(`input`);
 
+const settingsDefault = {
+	text: BUTTON_SETTINGS.querySelector(`#settingsText`).value,
+	href: BUTTON_SETTINGS.querySelector(`#settingsLink`).value,
+	target: `_blank`,
+	width: BUTTON_SETTINGS.querySelector(`#settingsWidth`).value,
+	height: BUTTON_SETTINGS.querySelector(`#settingsHeight`).value,
+	fontFamily: BUTTON_SETTINGS.querySelector(`#settingsFontFamily`).value,
+	fontSize: BUTTON_SETTINGS.querySelector(`#settingsFontSize`).value,
+	color: BUTTON_SETTINGS.querySelector(`#settingsFontColor`).value,
+	bgColor: BUTTON_SETTINGS.querySelector(`#settingsBgColor`).value
+};
+
 let settingsNew = {
+	get target() {
+		return this._target;
+	},
 	get text() {
 		return this._text;
 	},
@@ -33,6 +47,9 @@ let settingsNew = {
 	},
 	get bgColor() {
 		return this._bgColor;
+	},
+	set target(val) {
+		this._target = val;
 	},
 	set text(val) {
 		this._text = val;
@@ -70,4 +87,4 @@ BUTTON_CODE.addEventListener(`click`, (evt) => {
 	copyElementText(evt);
 });
 
-changeButton();
+changeButton(settingsDefault);
