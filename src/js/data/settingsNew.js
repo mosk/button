@@ -1,4 +1,7 @@
 let settingsNew = {
+	get target() {
+		return this._target;
+	},
 	get width() {
 		return this._width;
 	},
@@ -19,6 +22,9 @@ let settingsNew = {
 	},
 	get bgColor() {
 		return this._bgColor;
+	},
+	set target(val) {
+		this._target = val;
 	},
 	set width(val) {
 		this._width = val;

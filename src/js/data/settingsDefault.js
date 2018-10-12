@@ -3,7 +3,7 @@ const settingsContainer = document.querySelector(`.factory .settings`);
 const settingsDefault = {
 	text: settingsContainer.querySelector(`#settingsText`).value,
 	href: settingsContainer.querySelector(`#settingsLink`).value,
-	target: settingsContainer.querySelector(`#settingsTarget`).value,
+	target: `_blank`,
 	width: settingsContainer.querySelector(`#settingsWidth`).value,
 	height: settingsContainer.querySelector(`#settingsHeight`).value,
 	fontFamily: settingsContainer.querySelector(`#settingsFontFamily`).value,
