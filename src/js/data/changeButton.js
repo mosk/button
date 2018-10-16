@@ -14,8 +14,11 @@ const changeButton = (settings) => {
 
 	BUTTON.style.fontFamily = settings.fontFamily;
 	BUTTON.style.fontSize = `${settings.fontSize}px`;
+	BUTTON.style.fontWeight = settings.fontWeight;
 	BUTTON.style.color = settings.fontColor;
 	BUTTON.style.backgroundColor = settings.bgColor;
+
+	console.log(settings.fontFamily);
 
 	renderCode();
 };

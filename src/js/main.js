@@ -14,8 +14,9 @@ const settingsDefault = {
 	target: `_blank`,
 	width: BUTTON_SETTINGS.querySelector(`#settingsWidth`).value,
 	height: BUTTON_SETTINGS.querySelector(`#settingsHeight`).value,
-	fontFamily: BUTTON_SETTINGS.querySelector(`#settingsFontFamily`).value,
+	fontFamily: BUTTON_SETTINGS.querySelector(`#settingsFontFamily`).value.toString(),
 	fontSize: BUTTON_SETTINGS.querySelector(`#settingsFontSize`).value,
+	fontWeight: BUTTON_SETTINGS.querySelector(`#settingsFontWeight`).value,
 	color: BUTTON_SETTINGS.querySelector(`#settingsFontColor`).value,
 	bgColor: BUTTON_SETTINGS.querySelector(`#settingsBgColor`).value
 };

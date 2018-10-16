@@ -8,6 +8,13 @@ const refreshSettings = (event, settings) => {
 
 	settings[property] = event.target.value;
 
+	// беспредел
+	if (property === `fontfamily`) {
+		settings.fontFamily = event.target.value;
+	}
+
+	console.log(`${propertyName}, ${property}`);
+
 	changeButton(settings);
 };
 
